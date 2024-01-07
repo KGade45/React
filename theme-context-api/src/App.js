@@ -13,20 +13,14 @@ function App() {
   }
 
   const darkMode = ()=>{
-    setThemeMode("dark");
+    setThemeMode  ("dark");
   }
 
 //Change in theme
 
   useEffect(()=>{
-    const ele = document.querySelector('html');
-    ele.classList.remove('light', 'dark');
-    ele.classList.add(themeMode);
-
-    // This will trigger a re-render when the classList is updated
-    // ele.offsetHeight;
-    // eslint-disable-next-line no-unused-expressions
-    ele.offsetHeight;
+    document.querySelector('html').classList.remove("light", "dark");
+    document.querySelector('html').classList.add(themeMode);
   }, [themeMode])
   
 
@@ -40,8 +34,7 @@ function App() {
           </div>
 
           <div className="w-full max-w-sm mx-auto">
-            <Card/>
-
+            <Card />
           </div>
         </div>
       </div>
