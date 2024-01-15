@@ -11,24 +11,33 @@ function App() {
 
   useEffect(() => {
     authService.getCurrentUser()
-      .then((userData) => userData ? dispatch(login({ userData })) : dispatch(logout()))
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+          console.log(userData);
+        } else {
+          dispatch(logout())
+        }
+      })
       .finally(() => {
-        // console.log(loading);
         setLoading(false);
       })
+
+
   }, [])
 
+
   return !loading ? (
-    <div className='min-h-sc flex-wrap flex bg-gray-400'>
-      <div className="w-full block">
-        <Header />
+    <div className='min-h-screen flex flex-wrap text-center content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header/>
         <main>
-          TODO{/* <Outlet/> */}
+          Todo:  <Outlet/>
         </main>
-        <Footer />
+        <Footer/>
       </div>
     </div>
-  ) : (<div></div>);
+  ) : null 
 
 }
 
