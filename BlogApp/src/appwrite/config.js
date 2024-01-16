@@ -13,21 +13,21 @@ export class DatabaseService {
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({ title, slug, content, featuredimage, status, userId }) {
+    async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
-            return await this.databases.createDocument(conf.databaseId, conf.collectionId, slug, { title, content, featuredimage, status, userId })
+            return await this.databases.createDocument(conf.databaseId, conf.collectionId, slug, { title, content, featuredImage, status, userId })
         } catch (error) {
             throw error
         }
     }
 
-    async updatePost(slug, { title, content, featuredimage, status }) {
+    async updatePost(slug, { title, content, featuredImage, status }) {
         try {
             return await this.databases.updateDocument(conf.databaseId, conf.collectionId, slug,
                 {
                     title,
                     content,
-                    featuredimage,
+                    featuredImage,
                     status
                 });
         } catch (error) {
