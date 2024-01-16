@@ -43,7 +43,11 @@ function PostForm({post}) {
                     userId: userData.$id, 
                     // console.log(data);
                 })
-                navigate(`/post/${dbPost.$id}`)
+                if (dbPost) {
+                    navigate(`/post/${dbPost.$id}`);
+                }
+
+                // navigate(`/post/${dbPost.$id}`)
             }
         }
     }
@@ -61,13 +65,13 @@ function PostForm({post}) {
 
 
     useEffect(()=>{
-        const subsciption = watch((value, name)=>{
-            if(name === 'title'){
-                setValue("slug", slugTransform(value.title, {shouldValidate: true}))
+        const subscription = watch((value, { name }) => {
+            if (name === "title") {
+                setValue("slug", slugTransform(value.title), { shouldValidate: true });
             }
         })
 
-        return ()=> subsciption.unsubscribe()
+        return ()=> subscription.unsubscribe()
     },[watch, slugTransform, setValue])
 
     return (
@@ -118,7 +122,7 @@ function PostForm({post}) {
                 </Button>
             </div>
         </form>
-    )
+    );
 }
 
 export default PostForm

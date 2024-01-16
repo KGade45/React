@@ -80,7 +80,7 @@ export class DatabaseService {
 
     getFilePreview(fileId){
         try {
-            return this.getFilePreview(conf.bucketId, fileId);
+            return this.bucket.getFilePreview(conf.bucketId, fileId);
         } catch (error) {
             throw error;
         }

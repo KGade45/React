@@ -4,9 +4,7 @@ import { PostCard, Container } from '../components'
 function AllPosts() {
     const [posts, setPosts] = useState([])
     
-    useEffect(()=>{
-
-    }, [])
+    useEffect(()=>{}, [])
     
     appwriteService.getAllPosts([])
         .then((posts)=>{
@@ -21,7 +19,7 @@ function AllPosts() {
                 <div className='flex flex-wrap'>
                     {posts.map((post) => (
                         <div key={post.$id}>
-                            <PostCard post={post} />
+                            <PostCard {...post} />
                         </div>
                     ))}
                 </div>
